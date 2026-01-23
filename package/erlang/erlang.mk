@@ -1,0 +1,4 @@
+ERLANG_CONF_ENV= CFLAGS="$(TARGET_CFLAGS)" \
+	ERL_XCOMP_SYSROOT="$(STAGING_DIR)" \
+	erl_xcomp_sysroot="$(STAGING_DIR)"
+ERLANG_CONF_OPTS += --disable-year2038

@@ -1,0 +1,1 @@
+FONTCONFIG_CFLAGS += -std=gnu99

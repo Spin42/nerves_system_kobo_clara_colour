@@ -1,0 +1,6 @@
+menu "Custom Packages"
+
+source "$NERVES_DEFCONFIG_DIR/package/fbink/Config.in"
+source "$NERVES_DEFCONFIG_DIR/package/af_compat/Config.in"
+
+endmenu

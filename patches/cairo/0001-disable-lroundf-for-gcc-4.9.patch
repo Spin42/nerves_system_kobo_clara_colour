@@ -1,0 +1,19 @@
+From: Marc Lainez <marc.lainez@gmail.com>
+Date: Sat, 28 Dec 2025 17:18:00 +0100
+Subject: [PATCH] Disable optimization for cairo-ft-font to avoid VFP issues
+
+GCC 4.9 with -O3 generates invalid conditional VFP instructions.
+Disable optimization for the problematic file.
+
+--- a/src/cairo-ft-font.c
++++ b/src/cairo-ft-font.c
+@@ -38,6 +38,10 @@
+  *      Carl Worth <cworth@cworth.org>
+  */
+
++#if defined(__GNUC__) && __GNUC__ == 4
++#pragma GCC optimize ("O0")
++#endif
++
+ #define _DEFAULT_SOURCE /* for strdup() */
+ #include "cairoint.h"

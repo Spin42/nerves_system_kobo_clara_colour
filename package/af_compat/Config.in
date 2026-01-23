@@ -1,0 +1,5 @@
+config BR2_PACKAGE_AF_COMPAT
+	bool "af_compat"
+	help
+	  Add missing AF_IB, AF_MPLS, and AF_KCM socket family constants
+	  to the sysroot headers for compatibility with vintage_net.
