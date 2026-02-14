@@ -23,4 +23,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Build System**: Buildroot integration
 - **Debug Support**: UART console and SSH access
 
-[v0.1.0]: https://github.com/my-org/nerves_system_kobo_clara_colour/releases/tag/v0.1.0
+[v0.1.0]: https://github.com/Spin42/nerves_system_kobo_clara_colour/releases/tag/v0.1.0

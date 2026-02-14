@@ -1,7 +1,7 @@
 defmodule NervesSystemKoboClaraColour.MixProject do
   use Mix.Project
 
-  @github_organization "my-org"
+  @github_organization "Spin42"
   @app :nerves_system_kobo_clara_colour
   @source_url "https://github.com/#{@github_organization}/#{@app}"
   @version Path.join(__DIR__, "VERSION")
@@ -56,7 +56,7 @@ defmodule NervesSystemKoboClaraColour.MixProject do
         {"TARGET_ABI", "gnueabihf"},
         {"TARGET_GCC_FLAGS", "-std=gnu99"},
         {"NERVES_FW_PLATFORM", "kobo_clara_colour"},
-        {"NERVES_FW_ARCHITECTURE", "arm"},
+        {"NERVES_FW_ARCHITECTURE", "arm"}
       ],
       checksum: package_files()
     ]
@@ -66,7 +66,7 @@ defmodule NervesSystemKoboClaraColour.MixProject do
     [
       {:nerves, "~> 1.11", runtime: false},
       {:nerves_system_br, "~> 1.32", runtime: false},
-      {:nerves_toolchain_kobo_arm, path: "../nerves_toolchain_kobo_arm", runtime: false},
+      {:nerves_toolchain_kobo_arm, github: "Spin42/nerves_toolchain_kobo_arm", runtime: false},
       {:nerves_system_linter, "~> 0.4", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.22", only: :docs, runtime: false}
     ]
@@ -89,7 +89,7 @@ defmodule NervesSystemKoboClaraColour.MixProject do
   defp package do
     [
       files: package_files(),
-      licenses: ["Apache-2.0"],
+      licenses: ["MIT"],
       links: %{
         "GitHub" => @source_url
       }
