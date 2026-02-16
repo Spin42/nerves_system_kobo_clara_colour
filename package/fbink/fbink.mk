@@ -70,7 +70,12 @@ define FBINK_INSTALL_TARGET_CMDS
 endef
 
 define FBINK_INSTALL_STAGING_CMDS
-    $(TARGET_MAKE_ENV) $(MAKE) -C $(@D) $(FBINK_MAKE_OPTS) DESTDIR=$(STAGING_DIR) install
+    $(INSTALL) -D -m 0644 $(@D)/fbink.h $(STAGING_DIR)/usr/include/fbink.h
+    if [ -f $(@D)/Release/libfbink.so.1.0.0 ]; then \
+        $(INSTALL) -D -m 0755 $(@D)/Release/libfbink.so.1.0.0 $(STAGING_DIR)/usr/lib/libfbink.so.1.0.0; \
+        ln -sf libfbink.so.1.0.0 $(STAGING_DIR)/usr/lib/libfbink.so.1; \
+        ln -sf libfbink.so.1.0.0 $(STAGING_DIR)/usr/lib/libfbink.so; \
+    fi
 endef
 
 $(eval $(generic-package))
