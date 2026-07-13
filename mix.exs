@@ -54,7 +54,6 @@ defmodule NervesSystemKoboClaraColour.MixProject do
         {"TARGET_CPU", "cortex_a53"},
         {"TARGET_OS", "linux"},
         {"TARGET_ABI", "gnueabihf"},
-        {"TARGET_GCC_FLAGS", "-std=gnu99"},
         {"NERVES_FW_PLATFORM", "kobo_clara_colour"},
         {"NERVES_FW_ARCHITECTURE", "arm"}
       ],
@@ -66,7 +65,8 @@ defmodule NervesSystemKoboClaraColour.MixProject do
     [
       {:nerves, "~> 1.11", runtime: false},
       {:nerves_system_br, "~> 1.32", runtime: false},
-      {:nerves_toolchain_kobo_arm, github: "Spin42/nerves_toolchain_kobo_arm", runtime: false},
+      {:nerves_toolchain_armv7_nerves_linux_gnueabihf_4_9,
+       github: "Spin42/nerves_toolchain_armv7_nerves_linux_gnueabihf_4_9", runtime: false},
       {:nerves_system_linter, "~> 0.4", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.22", only: :docs, runtime: false}
     ]

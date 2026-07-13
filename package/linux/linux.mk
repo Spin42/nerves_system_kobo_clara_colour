@@ -8,6 +8,26 @@
 # tarball ends with ".part-aa", also download ".part-ab", concatenate
 # them to rebuild the original archive, and extract it.
 
+# Linux 4.9 predates GCC 10/11; newer compilers promote a handful of
+# warnings that old kernel code trips over (and some vendor Makefiles
+# add -Werror). Silence the known-noisy ones — these are all warnings
+# that upstream stable kernels also suppressed when adding modern GCC
+# support.
+LINUX_CFLAGS += \
+	-Wno-array-bounds \
+	-Wno-zero-length-bounds \
+	-Wno-stringop-overread \
+	-Wno-stringop-overflow \
+	-Wno-maybe-uninitialized \
+	-Wno-address-of-packed-member \
+	-Wno-misleading-indentation \
+	-Wno-format-truncation \
+	-Wno-stringop-truncation \
+	-Wno-restrict \
+	-Wno-packed-not-aligned \
+	-Wno-format-overflow \
+	-Wno-missing-attributes
+
 LINUX_KOBO_SPLIT_TARBALL_AA := $(filter %.part-aa,$(LINUX_SOURCE))
 
 ifneq ($(LINUX_KOBO_SPLIT_TARBALL_AA),)
