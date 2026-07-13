@@ -100,6 +100,11 @@ defmodule NervesSystemKoboClaraColour.MixProject do
     [
       "fwup_include",
       "rootfs_overlay",
+      "package",
+      "patches",
+      "busybox.fragment",
+      "Config.in",
+      "external.mk",
       "CHANGELOG.md",
       "fwup-ops.conf",
       "fwup.conf",
