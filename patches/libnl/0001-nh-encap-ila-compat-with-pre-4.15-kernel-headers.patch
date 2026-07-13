@@ -1,0 +1,30 @@
+From: Marc Lainez <marc.lainez@gmail.com>
+Date: Sun, 13 Jul 2026 12:00:00 +0200
+Subject: [PATCH] nh_encap_ila: build against pre-4.15 kernel headers
+
+linux/ila.h gained ILA_ATTR_IDENT_TYPE and ILA_ATTR_HOOK_TYPE in
+kernel 4.15; this system builds against 4.9 headers. Define the
+missing attribute values locally (they are part of the kernel netlink
+ABI and cannot change) and lift ILA_ATTR_MAX to cover them so the
+policy array is large enough.
+---
+--- a/lib/route/nh_encap_ila.c
++++ b/lib/route/nh_encap_ila.c
+@@ -3,6 +3,17 @@
+ #include "nl-default.h"
+ 
+ #include <linux/ila.h>
++
++/* Kernel headers < 4.15 lack these ILA attributes. The values are part
++ * of the kernel netlink ABI and cannot change. They are enum values in
++ * newer headers, so the #ifndef is always true; the numbers match. */
++#ifndef ILA_ATTR_IDENT_TYPE
++#define ILA_ATTR_IDENT_TYPE 8
++#define ILA_ATTR_HOOK_TYPE 9
++/* The old header's ILA_ATTR_MAX only covers up to ILA_ATTR_CSUM_MODE. */
++#undef ILA_ATTR_MAX
++#define ILA_ATTR_MAX 9
++#endif
+ #include <linux/lwtunnel.h>
+ 
+ #include <netlink/route/nexthop.h>

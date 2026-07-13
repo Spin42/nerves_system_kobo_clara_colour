@@ -64,7 +64,7 @@ defmodule NervesSystemKoboClaraColour.MixProject do
   defp deps do
     [
       {:nerves, "~> 1.11", runtime: false},
-      {:nerves_system_br, "~> 1.32", runtime: false},
+      {:nerves_system_br, "~> 1.34", runtime: false},
       {:nerves_toolchain_armv7_nerves_linux_gnueabihf_4_9,
        github: "Spin42/nerves_toolchain_armv7_nerves_linux_gnueabihf_4_9", runtime: false},
       {:nerves_system_linter, "~> 0.4", only: [:dev, :test], runtime: false},

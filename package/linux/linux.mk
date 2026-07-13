@@ -8,6 +8,10 @@
 # tarball ends with ".part-aa", also download ".part-ab", concatenate
 # them to rebuild the original archive, and extract it.
 
+# Linux 4.9 predates the LICENSES/ directory layout (added in 4.14);
+# only COPYING exists for legal-info collection.
+LINUX_LICENSE_FILES = COPYING
+
 # Linux 4.9 predates GCC 10/11; newer compilers promote a handful of
 # warnings that old kernel code trips over (and some vendor Makefiles
 # add -Werror). Silence the known-noisy ones — these are all warnings
